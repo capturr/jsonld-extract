@@ -17,7 +17,7 @@ export type TJsonldReader = (path: any) => any
 export const getDefinitions = ($: CheerioAPI, debug: boolean = false): any[] => {
 
     let definitions: any[] = [];
-    const rawDefinitions = $('script[type="application/ld+json"]');
+    const rawDefinitions = $('script[type="application/ld+json"]').toArray();
     for (const rawDefinition of rawDefinitions) {
         const raw = $(rawDefinition).contents().text().trim();
         try {

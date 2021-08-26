@@ -3,7 +3,6 @@
         "moduleResolution": "node",
         "outDir": "./bin",
         "skipLibCheck": true,
-    	"target": "es2015",
         "downlevelIteration": true
     },
     "include": [
