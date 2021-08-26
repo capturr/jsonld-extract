@@ -1,0 +1,21 @@
+{
+    "name": "@dopamyn/jsonld-extract",
+    "version": "0.0.1",
+    "private": false,
+    "description": "Json-LD data extractor",
+    "main": "src/index.ts",
+    "scripts": {
+        "build": "tsc",
+        "watch": "tsc -w"
+    },
+    "author": "Gaetan Le Gac",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/dopamyn/jsonld-extract.git"
+    },
+    "devDependencies": {
+        "typescript": "^4.3.5",
+        "cheerio": "^1.0.0-rc.10"
+    }
+}
