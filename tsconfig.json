@@ -1,11 +1,9 @@
 {
     "compilerOptions": {
-        "esModuleInterop": true,
         "moduleResolution": "node",
         "outDir": "./bin",
         "skipLibCheck": true,
-        "allowJs": true,
-
+    	"target": "es2015",
         "downlevelIteration": true
     },
     "include": [
