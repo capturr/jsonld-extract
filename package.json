@@ -2,7 +2,16 @@
     "name": "@dopamyn/jsonld-extract",
     "author": "Gaetan Le Gac <contact@gaetan-legac.fr>",
     "description": "A damn simple tool to extract json-ld metadata from webpage using jquery like api (jQuery, Cheerio, ...).",
-   	"keywords": ["jsonld", "metadata", "scraping", "crawling", "cheerio", "jquery", "html", "json"],
+    "keywords": [
+        "jsonld",
+        "metadata",
+        "scraping",
+        "crawling",
+        "cheerio",
+        "jquery",
+        "html",
+        "json"
+    ],
     "version": "0.0.6",
     "license": "MIT",
     "private": false,
@@ -17,10 +26,9 @@
     "scripts": {
         "build": "tsc",
         "watch": "tsc -w",
-        "prepare" : "npm run build"
+        "prepare": "npm run build"
     },
     "devDependencies": {
-        "typescript": "^4.3.5",
-        "cheerio": "^1.0.0-rc.10"
+        "typescript": "^4.3.5"
     }
 }

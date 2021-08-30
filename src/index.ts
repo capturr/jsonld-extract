@@ -2,8 +2,7 @@
 - DEPENDANCES
 ----------------------------------*/
 
-// Npm
-import type { CheerioAPI } from 'cheerio';
+
 
 /*----------------------------------
 - TYPES
@@ -11,10 +10,22 @@ import type { CheerioAPI } from 'cheerio';
 
 export type TJsonldReader = (path: any) => any
 
+type TOptions = {
+    debug?: boolean,
+    basePath?: string
+}
+
+type TJqueryAPI = (selector: string) => {
+    toArray: () => any[],
+    contents: () => {
+        text: () => string
+    }
+}
+
 /*----------------------------------
 - METHODES
 ----------------------------------*/
-export const getDefinitions = ($: CheerioAPI, debug: boolean = false): any[] => {
+export const getDefinitions = ($: TJqueryAPI, debug: boolean = false): any[] => {
 
     let definitions: any[] = [];
     const rawDefinitions = $('script[type="application/ld+json"]').toArray();
@@ -79,9 +90,13 @@ export const extractData = (path: string, definitions: any[], debug: boolean = f
 
 }
 
-export default ($: CheerioAPI, debug: boolean = false): TJsonldReader => {
+export default ($: TJqueryAPI, { debug, basePath }: TOptions = {}): TJsonldReader => {
 
     const definitions = getDefinitions($, debug);
 
-    return (path: string) => extractData(path, definitions, debug);
+    return (path: string) => extractData(
+        (basePath === undefined ? '' : basePath + '.') + path,
+        definitions, 
+        debug
+    );
 }
