@@ -1,12 +1,18 @@
 # Dopamyn Json-LD extractor
 
-A damn simple tool to extract json-ld metadata from webpage using jquery like api (jQuery, Cheerio, ...).
+A damn simple tool to extract json-ld metadata from webpage using jquery like api (jQuery, Cheerio, CashDom ...).
 
 ## Installation
 
 ```
 npm install --save @dopamyn/jsonld-extract
 ```
+
+## Tested APIs
+
+* jQuery
+* Cheerio
+* CashDom
 
 ## Usage example (Nodejs)
 

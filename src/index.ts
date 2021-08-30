@@ -16,7 +16,7 @@ type TOptions = {
 }
 
 type TJqueryAPI = (selector: string) => {
-    toArray: () => any[],
+    each: (callback: (index: number, element: any) => void) => void,
     contents: () => {
         text: () => string
     }
@@ -28,8 +28,8 @@ type TJqueryAPI = (selector: string) => {
 export const getDefinitions = ($: TJqueryAPI, debug: boolean = false): any[] => {
 
     let definitions: any[] = [];
-    const rawDefinitions = $('script[type="application/ld+json"]').toArray();
-    for (const rawDefinition of rawDefinitions) {
+    $('script[type="application/ld+json"]').each((i, rawDefinition) => {
+
         const raw = $(rawDefinition).contents().text().trim();
         try {
 
@@ -41,9 +41,9 @@ export const getDefinitions = ($: TJqueryAPI, debug: boolean = false): any[] => 
 
         } catch (e) {
             debug && console.warn(`[scraper][jsonld] Erreur parsing json`, e);
-            continue;
         }
-    }
+
+    });
 
     debug && console.log(`[scraper][jsonld] Définitions:`, definitions);
 
@@ -55,7 +55,7 @@ export const extractData = (path: string, definitions: any[], debug: boolean = f
     // Extraction branches
     const [type, ...branches] = path.split('.');
 
-    debug && console.log(`[scraper][jsonld] Extraction de:`, type, branches);
+    debug && console.log(`[scraper][jsonld][${path}] Extraction`);
 
     // Recherche dans chaque bloc de définition
     itDefinitions:
@@ -64,7 +64,7 @@ export const extractData = (path: string, definitions: any[], debug: boolean = f
         if (definition['@type']?.toLowerCase() !== type)
             continue;
 
-        debug && console.log(`[scraper][jsonld] ${type} Trouvé`, definition);
+        debug && console.log(`[scraper][jsonld][${path}] Trouvé`, definition);
 
         // Extraction valeur
         let valeur: any = definition;
@@ -77,7 +77,7 @@ export const extractData = (path: string, definitions: any[], debug: boolean = f
             valeur = valeur[branche];
         }
 
-        debug && console.log(`[scraper][jsonld] Valeur trouvée:`, valeur);
+        debug && console.log(`[scraper][jsonld][${path}] Valeur trouvée:`, valeur);
 
         // Retour si non-nulle
         if (valeur !== undefined && valeur !== null)
