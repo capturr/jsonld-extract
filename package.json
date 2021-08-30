@@ -3,7 +3,7 @@
     "author": "Gaetan Le Gac <contact@gaetan-legac.fr>",
     "description": "A damn simple tool to extract json-ld metadata from webpage using jquery like api (jQuery, Cheerio, ...).",
    	"keywords": ["jsonld", "metadata", "scraping", "crawling", "cheerio", "jquery", "html", "json"],
-    "version": "0.0.5",
+    "version": "0.0.6",
     "license": "MIT",
     "private": false,
     "main": "bin/index.js",
