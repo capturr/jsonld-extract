@@ -36,7 +36,7 @@ export const getDefinitions = ($: TJqueryAPI, debug: boolean = false): any[] => 
             const definition = JSON.parse(raw);
             if (Array.isArray(definition))
                 definitions.push(...definition);
-            else if (typeof definition === "object")
+            else if (typeof definition === "object" && definition !== null)
                 definitions.push(definition);
 
         } catch (e) {
