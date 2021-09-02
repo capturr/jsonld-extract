@@ -1,5 +1,5 @@
 {
-    "name": "@dopamyn/jsonld-extract",
+    "name": "jsonld-extract",
     "author": "Gaetan Le Gac <contact@gaetan-legac.fr>",
     "description": "A damn simple tool to extract json-ld metadata from webpage using jquery like api (jQuery, Cheerio, CashDOM, ...).",
     "keywords": [
